@@ -9,7 +9,7 @@ namespace Snake
     public enum Smer { Up, Down, Left, Right }
     internal class Had
     {
-        public List<Point> Telo { get; set;}
+        public List<Point> Telo { get; set; }
         public Smer AktualniSmer { get; set; }
 
         public Had()
@@ -25,32 +25,50 @@ namespace Snake
         }
         public void Pohyb()
         {
-            
+
             Point novaHlava = Telo[0];
 
-            
+
             switch (AktualniSmer)
             {
                 case Smer.Up:
-                    novaHlava.Y--; 
+                    novaHlava.Y--;
                     break;
                 case Smer.Down:
-                    novaHlava.Y++; 
+                    novaHlava.Y++;
                     break;
                 case Smer.Left:
-                    novaHlava.X--; 
+                    novaHlava.X--;
                     break;
                 case Smer.Right:
-                    novaHlava.X++; 
+                    novaHlava.X++;
                     break;
             }
 
-            
+
             Telo.Insert(0, novaHlava);
 
-            
+
             Telo.RemoveAt(Telo.Count - 1);
         }
+
+        public void Rust()
+        {
+            
+            Point novaHlava = Telo[0];
+
+            switch (AktualniSmer)
+            {
+                case Smer.Up: novaHlava.Y--; break;
+                case Smer.Down: novaHlava.Y++; break;
+                case Smer.Left: novaHlava.X--; break;
+                case Smer.Right: novaHlava.X++; break;
+            }
+
+            Telo.Insert(0, novaHlava);
+            
+        }
+
     }
 
 }
