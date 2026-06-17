@@ -2,9 +2,6 @@
 
 namespace SnakeGame
 {
-    /// <summary>
-    /// Handles the Game Over screen, animation, and player prompt.
-    /// </summary>
     public class GameOver
     {
         private readonly ScoreManager _scoreManager;
@@ -14,14 +11,7 @@ namespace SnakeGame
             _scoreManager = scoreManager;
         }
 
-        // ── Hlavní metoda ────────────────────────────────────────────────
-
-        /// <summary>
-        /// Zobrazí celou Game Over obrazovku.
-        /// Vrátí true pokud chce hráč hrát znovu.
-        /// </summary>
-        /// <param name="reason">Důvod konce hry (Wall / Self).</param>
-        public bool Show(CollisionType reason)
+            public bool Show(CollisionType reason)
         {
             Console.Clear();
             PrintReason(reason);
@@ -31,12 +21,7 @@ namespace SnakeGame
             return AskPlayAgain();
         }
 
-        // ── Jednotlivé sekce ─────────────────────────────────────────────
-
-        /// <summary>
-        /// Vypíše důvod konce hry.
-        /// </summary>
-        private void PrintReason(CollisionType reason)
+            private void PrintReason(CollisionType reason)
         {
             Console.ForegroundColor = ConsoleColor.DarkYellow;
 
@@ -52,10 +37,7 @@ namespace SnakeGame
             Console.WriteLine();
         }
 
-        /// <summary>
-        /// Vypíše statistiky aktuální hry.
-        /// </summary>
-        private void PrintStats()
+            private void PrintStats()
         {
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("  ───────────── VÝSLEDKY ─────────────");
@@ -82,9 +64,7 @@ namespace SnakeGame
             Console.WriteLine();
         }
 
-        /// <summary>
-        /// Pokud hráč dosáhl high score, zeptá se na jméno a uloží záznam.
-        /// </summary>
+    
         private void AskForHighScore()
         {
             if (!_scoreManager.IsHighScore()) return;
@@ -103,11 +83,7 @@ namespace SnakeGame
             Console.WriteLine();
         }
 
-        /// <summary>
-        /// Zeptá se hráče, zda chce hrát znovu.
-        /// Vrátí true = hrát znovu, false = konec.
-        /// </summary>
-        private bool AskPlayAgain()
+      private bool AskPlayAgain()
         {
             Console.ForegroundColor = ConsoleColor.White;
             Console.Write("  Chceš hrát znovu? ");
@@ -128,7 +104,6 @@ namespace SnakeGame
                 if (key == ConsoleKey.A) return true;
                 if (key == ConsoleKey.N) return false;
 
-                // Enter = hrát znovu jako výchozí
                 if (key == ConsoleKey.Enter) return true;
             }
         }
